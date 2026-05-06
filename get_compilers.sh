@@ -4,7 +4,7 @@
 mkdir -p /etc/xcompile
 cd /etc/xcompile
 
-# download compilers (replaced ubuntu's legacy ones with these i found)
+# download compilers (replaced ubuntu legacy ones with these i found)
 wget https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2017.09-release/arc_gnu_2017.09_prebuilt_uclibc_le_arc700_linux_install.tar.gz
 wget https://github.com/R00tS3c/DDOS-RootSec/raw/master/uclib-cross-compilers/cross-compiler-powerpc.tar.bz2
 wget https://github.com/R00tS3c/DDOS-RootSec/raw/master/uclib-cross-compilers/cross-compiler-sh4.tar.bz2
@@ -23,7 +23,11 @@ wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar
 tar -xf upx-3.94-amd64_linux.tar.xz
 mv upx-3.94-amd64_linux/upx /usr/local/bin/
 rm -rf upx-3.94-amd64_linux upx-3.94-amd64_linux.tar.xz
+
 # extract compilers
+
+# Below I also listed the type of arch above every extraction
+
 # ARC
 if [ -f arc_gnu_2017.09_prebuilt_uclibc_le_arc700_linux_install.tar.gz ]; then
   mkdir -p arc && cd arc
