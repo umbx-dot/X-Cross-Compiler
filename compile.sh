@@ -27,7 +27,7 @@ echo "compiled armv5l"
 armv6l-gcc *.c -o ic2.armv6l -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_armv6l -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
 echo "compiled armv6l"
 armv7l-gcc *.c -o ic2.armv7l -fno-stack-protector -fno-ident -fno-asynchronous-unwind-tables -DARCH_armv7l -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
-echo "compiled armv6l"
+echo "compiled armv7l"
 sh4-gcc *.c -o ic2.sh4 -DARCH_sh4 -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -s -std=c99 -static
 echo "compiled sh4"
 arc-linux-gcc *.c -o ic2.arc -DARCH_arc -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
