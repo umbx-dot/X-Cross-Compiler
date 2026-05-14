@@ -1,6 +1,9 @@
 #!/bin/sh
 export PATH=/etc/xcompile/x86_64/bin:/etc/xcompile/powerpc/bin:/etc/xcompile/mips/bin:/etc/xcompile/mipsel/bin:/etc/xcompile/armv4l/bin:/etc/xcompile/armv5l/bin:/etc/xcompile/armv6l/bin:/etc/xcompile/armv7l/bin:/etc/xcompile/sh4/bin:/etc/xcompile/arc/bin:/etc/xcompile/csky-gcc/bin:/etc/xcompile/aarch64/bin:/etc/xcompile/m68k/bin:/etc/xcompile/sparc/bin:/etc/xcompile/i486/bin:$PATH
 
+for f in *.{c,h}; do [ -f "$f" ] && sed -i -e '$a\' "$f"; done
+
+
 # build for each arch, note that compilation commands vary from arch to arch
 powerpc-gcc *.c -o ic2.powerpc -DARCH_powerpc -lpthread -O3 -fomit-frame-pointer -fdata-sections -ffunction-sections -Wl,--gc-sections -std=c99 -static
 echo "compiled powerpc"
